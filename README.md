@@ -4,8 +4,8 @@ A machine learning project that estimates medical insurance charges from user de
 
 This project combines exploratory analysis, model training, and a Streamlit app for real-time insurance cost prediction.
 
-# Live Demo 
-https://github.com/Ashisheoran
+###Live Demo 
+https://health-insurance-cost-prediction-as.streamlit.app/
 
 ## Problem Statement
 
