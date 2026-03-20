@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 import pickle
 
 st.title("Health Insurance Cost Prediction ")
 
-with open("insurance_model.pkl", 'rb') as f:
-    model = pickle.load(f)
+with open("insurance_pipeline.pkl", 'rb') as f:
+    pipeline = pickle.load(f)
+
+expected_features = list(pipeline.feature_names_in_)
 
 # Input data
 age = st.slider("Select your age: ", 18,100)
@@ -21,7 +22,7 @@ sex = 0 if sex == "female" else 1
 smoker = 0 if smoker == "no" else 1
 
 region_northwest = 1 if region == "northwest" else 0
-region_soutwest = 1 if region == "southwest" else 0
+region_southwest = 1 if region == "southwest" else 0
 region_southeast = 1 if region == "southeast" else 0
 
 # Create a dataframe just like the model expects
@@ -33,15 +34,17 @@ input_data = pd.DataFrame({
     'children':[children],
     'smoker':[smoker],
     'region_northwest':[region_northwest],
-    'region_southwest':[region_soutwest],
     'region_southeast':[region_southeast],
+    'region_southwest':[region_southwest],
 })
+
+input_data = input_data.reindex(columns=expected_features)
 
 st.subheader("Your Input Data")
 st.write(input_data)
 
 if st.button("Predict My Insurance Cost 💸"):
-    prediction = model.predict(input_data)[0]
+    prediction = pipeline.predict(input_data)[0]
     st.success(f"Estimated Insurance Cost: ${prediction:.2f}")
 
     if smoker == 1:
