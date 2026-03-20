@@ -4,6 +4,9 @@ A machine learning project that estimates medical insurance charges from user de
 
 This project combines exploratory analysis, model training, and a Streamlit app for real-time insurance cost prediction.
 
+# Live Demo 
+https://github.com/Ashisheoran
+
 ## Problem Statement
 
 Insurance charges are influenced by multiple attributes such as age, BMI, smoking status, and region. The goal is to build a regression model that predicts expected insurance cost from these inputs.
