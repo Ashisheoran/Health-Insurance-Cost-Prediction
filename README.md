@@ -1,4 +1,4 @@
-# Health Insurance Cost Prediction
+# 🏥 Health Insurance Cost Prediction
 
 A machine learning project that estimates medical insurance charges from user demographics and lifestyle factors.
 
